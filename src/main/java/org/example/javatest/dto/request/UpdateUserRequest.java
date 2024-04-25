@@ -22,8 +22,7 @@ public class UpdateUserRequest {
     @NotNull(message = "Id cannot be null")
     private Long id;
 
-    @CustomEmail
-    @NotBlank(message = "Email cannot be empty")
+    @CustomEmail(message = "Invalid email")
     private String email;
 
     @NotBlank(message = "First name cannot be empty")

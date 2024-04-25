@@ -32,7 +32,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class UserServiceTest {
+class UserServiceTest {
 
     @Mock
     private UserRepository userRepository;
@@ -88,7 +88,7 @@ public class UserServiceTest {
         LocalDate endDate = LocalDate.now();
         when(userRepository.findByBirthDateBetween(any(LocalDate.class), any(LocalDate.class)))
                 .thenReturn(Collections.singletonList(new User()));
-        when(userMapper.toDto(any(User.class))).thenReturn(new UserDto());
+        when(userMapper.toUserDto(any(User.class))).thenReturn(new UserDto());
         var response = userService.findUsersByBirthDateRange(startDate, endDate);
         assertFalse(response.getUsers().isEmpty());
     }

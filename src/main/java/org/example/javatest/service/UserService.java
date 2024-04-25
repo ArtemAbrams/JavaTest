@@ -47,7 +47,7 @@ public class UserService {
         var users = userRepository.findByBirthDateBetween(from,
                         to)
                 .stream()
-                .map(userMapper::toDto)
+                .map(userMapper::toUserDto)
                 .toList();
 
         log.info("Found " + users.size() + " users");

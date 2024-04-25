@@ -10,5 +10,5 @@ import org.mapstruct.MappingConstants;
 public interface UserMapper {
 
     User toEntity(CreateUserRequest createUserRequest);
-    UserDto toDto(User user);
+    UserDto toUserDto(User user);
 }

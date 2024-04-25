@@ -18,8 +18,7 @@ import java.time.LocalDate;
 @ToString
 public class CreateUserRequest {
 
-    @CustomEmail
-    @NotBlank(message = "Email cannot be empty")
+    @CustomEmail(message = "Invalid email")
     private String email;
 
     @NotBlank(message = "First name cannot be empty")
