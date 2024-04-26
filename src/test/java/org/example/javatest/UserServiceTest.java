@@ -15,7 +15,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import java.time.LocalDate;
@@ -32,8 +34,11 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
+@ActiveProfiles("test")
 class UserServiceTest {
 
+    @Value("${user.registration.min-age}")
+    private int minAge;
     @Mock
     private UserRepository userRepository;
 
@@ -47,7 +52,7 @@ class UserServiceTest {
     void setUp() {
         MockitoAnnotations.initMocks(this);
         userService = new UserService(userRepository, userMapper);
-        ReflectionTestUtils.setField(userService, "minAge", 18);
+        ReflectionTestUtils.setField(userService, "minAge", minAge);
     }
 
     @Test
